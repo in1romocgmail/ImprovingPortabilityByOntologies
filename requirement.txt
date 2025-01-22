@@ -1,0 +1,9 @@
+# Requirements for Weka Project
+
+## Software
+- Java Development Kit (JDK) 8 or higher
+
+## Libraries
+- Weka library (`weka.jar`)
+
+
