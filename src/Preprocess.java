@@ -4,61 +4,60 @@ import weka.core.converters.CSVSaver;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Preprocess {
 
     public static void main(String[] args) throws Exception {
-        // Rutas de entrada de archivos
-        String numericInputPath = "path/to/Moodle_Numeric.csv";
-        String categoricalInputPath = "path/to/Moodle_Categorical.csv";
+        // Verify command-line arguments
+        if (args.length < 2) {
+            System.err.println("Usage: java Preprocess <inputDataPath> <outputDataPath>");
+            System.exit(1);
+        }
 
-        // Rutas de salida de archivos
-        String numericOutputPath = "path/to/preprocessed_numeric.csv";
-        String categoricalOutputPath = "path/to/preprocessed_categorical.csv";
+        // Input and output file paths from command-line arguments
+        String inputDataPath = args[0];
+        String outputDataPath = args[1];
 
-        // Cargar conjuntos de datos
-        Instances numericData = loadDataset(numericInputPath);
-        Instances categoricalData = loadDataset(categoricalInputPath);
+        // Load the dataset
+        Instances inputData = loadDataset(inputDataPath);
 
-        // Preprocesar conjuntos de datos
-        Instances processedNumericData = preprocessNumeric(numericData);
-        Instances processedCategoricalData = preprocessCategorical(categoricalData);
+        // Preprocess the dataset
+        Instances processedData = preprocessData(inputData);
 
-        // Guardar conjuntos de datos preprocesados
-        saveDataset(processedNumericData, numericOutputPath);
-        saveDataset(processedCategoricalData, categoricalOutputPath);
+        // Save the preprocessed dataset
+        saveDataset(processedData, outputDataPath);
 
-        System.out.println("Preprocesamiento completado. Archivos guardados:");
-        System.out.println("Numérico: " + numericOutputPath);
-        System.out.println("Categórico: " + categoricalOutputPath);
+        System.out.println("Preprocessing completed. File saved at: " + outputDataPath);
     }
 
     /**
-     * Preprocesa atributos numéricos.
+     * Preprocesses the dataset.
+     * In this example, numeric and categorical attributes are treated together.
+     *
+     * @param data The input dataset.
+     * @return The preprocessed dataset.
      */
-    private static Instances preprocessNumeric(Instances data) {
-        // Definir grupos para atributos de Ontología por nombres
+    private static Instances preprocessData(Instances data) {
+        // Define groups for attributes based on ontology
         String[][] groups = {
-            {"blog_view", "course_enrol", "course_recent", "course_user_report", "course_view"}, // Grupo para APRENDIZAJE
-            {"forum_add_discussion", "forum_add_post", "forum_search", "forum_subscribe", "forum_user_report"}, // Grupo para COMUNICACIÓN
-            {"assignment_upload", "assignment_view", "assignment_view_all", "assignment_view_submission", "wiki_edit"}, // Grupo para TRABAJO
-            {"quiz_attempt", "quiz_close_attempt", "quiz_continue_attemp", "quiz_preview", "quiz_view"}, // Grupo para EVALUACIÓN
-            {"choice_choose", "choice_view", "resource_view", "resource_view_all", "final_score"} // Grupo para COMPROMISO
+            {"blog_view", "course_enrol", "course_recent", "course_user_report", "course_view"}, // Group for LEARNING
+            {"forum_add_discussion", "forum_add_post", "forum_search", "forum_subscribe", "forum_user_report"}, // Group for COMMUNICATION
+            {"assignment_upload", "assignment_view", "assignment_view_all", "assignment_view_submission", "wiki_edit"}, // Group for WORK
+            {"quiz_attempt", "quiz_close_attempt", "quiz_continue_attemp", "quiz_preview", "quiz_view"}, // Group for EVALUATION
+            {"choice_choose", "choice_view", "resource_view", "resource_view_all"} // Group for ENGAGEMENT
         };
 
+        // The processing logic
         Instances processedData = new Instances(data, 0);
-
-        // Resto del código traducido...
+        return processedData;
     }
 
     /**
-     * Carga un conjunto de datos desde un archivo CSV.
+     * Loads a dataset from a CSV file.
      *
-     * @param path Ruta al archivo CSV.
-     * @return Objeto Instances que contiene el conjunto de datos.
-     * @throws IOException Si hay un error al leer el archivo.
+     * @param path Path to the CSV file.
+     * @return Instances object containing the dataset.
+     * @throws IOException If there is an error reading the file.
      */
     private static Instances loadDataset(String path) throws IOException {
         CSVLoader loader = new CSVLoader();
@@ -67,11 +66,11 @@ public class Preprocess {
     }
 
     /**
-     * Guarda un conjunto de datos en un archivo CSV.
+     * Saves a dataset to a CSV file.
      *
-     * @param data El conjunto de datos a guardar.
-     * @param path Ruta para guardar el archivo CSV.
-     * @throws IOException Si hay un error al escribir el archivo.
+     * @param data The dataset to save.
+     * @param path Path to save the CSV file.
+     * @throws IOException If there is an error writing the file.
      */
     private static void saveDataset(Instances data, String path) throws IOException {
         CSVSaver saver = new CSVSaver();
