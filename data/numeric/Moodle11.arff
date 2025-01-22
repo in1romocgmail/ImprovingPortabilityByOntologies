@@ -1,0 +1,55 @@
+@relation   union_files_*.arff_(total_attributes:_5_total_instances:_46)_author:_Javier_López_Zambrano
+
+@attribute LEARNING/READING/VIEWING numeric
+@attribute COMMUNICATING numeric
+@attribute WORKING/DOING numeric
+@attribute ENGAGEMENT numeric
+@attribute final_score {Fail,Pass}
+
+@data
+100,2,0,82,Fail
+20,10,0,22.5,Pass
+20,0,0,13.5,Fail
+52,12,7,66,Pass
+10,1,0,7.5,Pass
+31,4,0,30,Pass
+25,7,1,30.5,Pass
+24,9,0,21.5,Pass
+72,2,0,54.5,Fail
+65,16,0,147.5,Pass
+39,12,6,41.5,Pass
+32,1,0,31.5,Pass
+91.962143,1.18512,0,36.867594,Fail
+20.489375,1.92741,0,78.382852,Fail
+46.671457,0.172074,0,39.370895,Fail
+5,1,0,5,Pass
+40,3,8,44.5,Fail
+38,7,8,36.5,Pass
+33,1,2,27,Pass
+34,15,1,33.5,Pass
+51,2,5,58,Fail
+20,4,1,19,Pass
+46,4,4,38,Pass
+32,7,0,35.5,Pass
+39,0,0,28,Pass
+21,1,2,19.5,Fail
+78,12,3,94.5,Fail
+11,0,2,16.5,Fail
+10,0,0,11.5,Pass
+8,3,3,17,Pass
+37,1,7,49,Fail
+18,1,3,30,Pass
+13,1,1,18.5,Fail
+50,21,1,63.5,Pass
+11,0,0,11.5,Pass
+25,5,7,35.5,Pass
+19,0,0,16,Pass
+20,11,0,21,Pass
+28,1,16,37,Pass
+39.69858,2.18512,7.963765,47.464903,Fail
+50.816485,1.036295,2.180404,21.532996,Fail
+16.129126,0.086037,2,18.392992,Fail
+71.389876,3.524105,2.340107,82.743983,Fail
+35.958901,1.758526,3.350655,16.70138,Fail
+28.629838,1,6.289886,34.789015,Fail
+17.884732,1,1.274069,18.690202,Fail
