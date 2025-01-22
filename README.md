@@ -40,7 +40,7 @@ javac -cp lib/weka.jar src/ArffToCsvConverter.java
 
 2. Run the compiled class:
 ```
-java -cp lib/weka.jar:src ArffToCsvConverter
+java -cp lib/weka.jar:src ArffToCsvConverter FILE.arff FILE.csv
 ```
 
 ### Preprocessing
