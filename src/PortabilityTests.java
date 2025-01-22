@@ -9,54 +9,63 @@ import java.util.Random;
 public class PortabilityTests {
 
     public static void main(String[] args) throws Exception {
-        // Rutas a los conjuntos de datos
-        String[] datasets = {
-            "path/to/path/to/Moodle1.csv",
-            "path/to/path/to/Moodle2.csv",
-            "path/to/path/to/Moodle3.csv",
-            "path/to/path/to/Moodle4.csv",
-            "path/to/path/to/Moodle5.csv",
-            "path/to/path/to/Moodle6.csv",
-            "path/to/path/to/Moodle7.csv",
-            "path/to/path/to/Moodle8.csv",
-            "path/to/path/to/Moodle9.csv",
-            "path/to/path/to/Moodle10.csv",
-            "path/to/path/to/Moodle11.csv",
-            "path/to/path/to/Moodle12.csv",
-            "path/to/path/to/Moodle13.csv",
-            "path/to/path/to/Moodle14.csv",
-            "path/to/path/to/Moodle15.csv",
-            "path/to/path/to/Moodle16.csv",
-        };
+        // Validate command line arguments
+        if (args.length != 1) {
+            System.err.println("Please provide the directory containing the datasets as a command line argument.");
+            System.exit(1);
+        }
 
-        // Bucle a través de cada conjunto de datos
+        // Directory containing dataset files
+        String datasetDirectory = args[0];
+
+        // Get all CSV files from the specified directory
+        File dir = new File(datasetDirectory);
+        if (!dir.isDirectory()) {
+            System.err.println("The provided path is not a directory.");
+            System.exit(1);
+        }
+
+        // List of dataset paths
+        String[] datasets = dir.list((directory, name) -> name.endsWith(".csv"));
+
+        if (datasets == null || datasets.length == 0) {
+            System.err.println("No CSV files found in the specified directory.");
+            System.exit(1);
+        }
+
+        // Prepend the directory path to each dataset file name
+        for (int i = 0; i < datasets.length; i++) {
+            datasets[i] = new File(dir, datasets[i]).getAbsolutePath();
+        }
+
+        // Loop through each dataset
         for (String trainDatasetPath : datasets) {
-            System.out.println("Entrenando en: " + trainDatasetPath);
+            System.out.println("Training on: " + trainDatasetPath);
 
-            // Cargar conjunto de datos de entrenamiento
+            // Load training dataset
             Instances trainData = loadDataset(trainDatasetPath);
             trainData.setClassIndex(trainData.numAttributes() - 1);
 
-            // Entrenar clasificador J48
+            // Train J48 classifier
             J48 tree = new J48();
             tree.buildClassifier(trainData);
 
-            // Evaluar en todos los conjuntos de datos
+            // Evaluate on all datasets
             for (String testDatasetPath : datasets) {
-                System.out.println("Probando en: " + testDatasetPath);
+                System.out.println("Testing on: " + testDatasetPath);
 
-                // Cargar conjunto de datos de prueba
+                // Load test dataset
                 Instances testData = loadDataset(testDatasetPath);
                 testData.setClassIndex(testData.numAttributes() - 1);
 
-                // Evaluar el modelo
+                // Evaluate the model
                 Evaluation eval = new Evaluation(trainData);
                 eval.evaluateModel(tree, testData);
 
-                // Imprimir métricas de evaluación
-                System.out.println("Resultados del modelo entrenado en " + trainDatasetPath + " probado en " + testDatasetPath);
+                // Print evaluation metrics
+                System.out.println("Results of the model trained on " + trainDatasetPath + " tested on " + testDatasetPath);
                 System.out.println("AUC: " + eval.areaUnderROC(1));
-                System.out.println("Matriz de confusión: ");
+                System.out.println("Confusion Matrix: ");
                 System.out.println(eval.toMatrixString());
                 System.out.println("====================================\n");
             }
@@ -64,10 +73,10 @@ public class PortabilityTests {
     }
 
     /**
-     * Carga un conjunto de datos desde un archivo CSV.
-     * @param path Ruta al archivo CSV.
-     * @return Objeto Instances que contiene el conjunto de datos.
-     * @throws Exception Si hay un error al leer el archivo.
+     * Loads a dataset from a CSV file.
+     * @param path Path to the CSV file.
+     * @return Instances object containing the dataset.
+     * @throws Exception If an error occurs while reading the file.
      */
     private static Instances loadDataset(String path) throws Exception {
         CSVLoader loader = new CSVLoader();
