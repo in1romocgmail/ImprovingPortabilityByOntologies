@@ -1,61 +1,75 @@
 # ImprovingPortabilityByOntologies
 
-Código fuente utilizado en el artículo: López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). https://doi.org/10.1007/s12528-021-09273-3
+This repository contains the source code for the application presented in the article:
 
-Este código permite el preprocesamiento de conjuntos de datos de Moodle y la realización de pruebas de portabilidad utilizando la libreria Weka.
+**Cerezo, R., Calderón, V., & Romero, C. (2019).** *A holographic mobile-based application for practicing pronunciation of basic English vocabulary for Spanish speaking children*. International Journal of Human-Computer Studies, 124, 13-25. [https://doi.org/10.1016/j.ijhcs.2018.11.009](https://doi.org/10.1016/j.ijhcs.2018.11.009)
 
-## Estructura
+## Structure
 
- README.md                  # Descripción e instrucciones de uso  
- requirements.txt           # Requisitos  
+- `README.md`: Description and usage instructions.
+- `requirements.txt`: Python dependencies.
+- `src/`: Source code.
+  - `preprocess_data.py`: Script for data preprocessing.
+  - `discover_rules.py`: Sequential SD-DFPTRee script to discover rules.
+  - `sd_dfptree.py`: SD-DFPTRee Spark script to discover rules.
+  - `postprocess_rules.py`: Script for postprocessing rules.
+- `data/`: Datasets used.
 
- src/                       # Código fuente  
- ├── Preprocess.java        # Clase para preprocesar datos  
- ├── PortabilityTests.java  # Clase para ejecutar las pruebas de portabilidad  
+## Installation
 
- lib/
- ├── weka.jar               # Libreria weka  
- 
+Clone the repository:
 
-## Requisitos Previos
-
-1. Java Development Kit (JDK) 8 o superior.
-2. Librería Weka: Coloca el archivo `weka.jar` en el directorio `lib/`.
-
-## Instalación
-
-Clona el repositorio 
 ```
 git clone https://github.com/in1romocgmail/ImprovingPortabilityByOntologies.git
 ```
 
-## Uso
+## Requirements
 
-### Preprocesamiento
+Install the dependencies using:
 
-Ejecuta la clase `Preprocess` para preprocesar conjuntos de datos. Sigue los pasos a continuación:
-
-1. Compila el archivo `Preprocess.java`:
-javac -cp lib/weka.jar src/Preprocess.java
-
-2. Ejecuta la clase compilada:
-java -cp lib/weka.jar:src Preprocess
-
-### Pruebas de Portabilidad
-
-Ejecuta la clase `PortabilityTests` para realizar pruebas de portabilidad. Sigue los pasos a continuación:
-
-1. Compila el archivo `PortabilityTests.java`:
 ```
-javac -cp lib/weka.jar src/PortabilityTests.java
+pip install -r requirements.txt
 ```
 
-2. Ejecuta la clase compilada:
+Copy the dataset to be used into the `data` directory.
+
+## Usage
+
+### Step 1: Preprocess Data
+
 ```
-java -cp lib/weka.jar:src PortabilityTests
+python src/preprocess_data.py --input data/input/raw_data.csv --output data/output/preprocessed_data.csv
 ```
 
-## Notas
+### Step 2: Discover Rules
 
-- Asegúrate de que el archivo `weka.jar` esté disponible en el directorio `lib/`.
-- Actualiza las rutas de los archivos en `Preprocess.java` y `PortabilityTests.java` para que coincidan con la ubicación de tus conjuntos de datos.
+```
+python src/discover_rules.py --input data/output/preprocessed_data.csv --output data/output/rules.csv
+```
+
+### Step 3: Discover Rules with Spark
+
+```
+python src/sd_dfptree.py --input data/output/preprocessed_data.csv --output data/output/spark_rules.csv
+```
+
+### Step 4: Postprocess Rules
+
+```
+python src/postprocess_rules.py --input data/output/spark_rules.csv --output data/output/final_rules.csv
+```
+
+## Reference
+**Cerezo, R., Calderón, V., & Romero, C. (2019).** *A holographic mobile-based application for practicing pronunciation of basic English vocabulary for Spanish speaking children*. International Journal of Human-Computer Studies, 124, 13-25. [https://doi.org/10.1016/j.ijhcs.2018.11.009](https://doi.org/10.1016/j.ijhcs.2018.11.009)
+
+```
+@article{cerezo2019holographic,
+  title={A holographic mobile-based application for practicing pronunciation of basic English vocabulary for Spanish speaking children},
+  author={Cerezo, Rebeca and Calder{\'o}n, Vicente and Romero, Crist{\'o}bal},
+  journal={International Journal of Human-Computer Studies},
+  volume={124},
+  pages={13--25},
+  year={2019},
+  publisher={Elsevier}
+}
+```
