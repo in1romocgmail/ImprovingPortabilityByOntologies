@@ -1,9 +1,8 @@
 # ImprovingPortabilityByOntologies
 
-This repository contains the source code for the application presented in the article:
+This repository contains the source code associated to the paper:
 
-**Cerezo, R., Calderón, V., & Romero, C. (2019).** *A holographic mobile-based application for practicing pronunciation of basic English vocabulary for Spanish speaking children*. International Journal of Human-Computer Studies, 124, 13-25. [https://doi.org/10.1016/j.ijhcs.2018.11.009](https://doi.org/10.1016/j.ijhcs.2018.11.009)
-
+**López-Zambrano, J., Lara, J.A. & Romero, C.** Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). [https://doi.org/10.1007/s12528-021-09273-3](https://doi.org/10.1007/s12528-021-09273-3)
 ## Structure
 
 - `README.md`: Description and usage instructions.
@@ -60,16 +59,14 @@ python src/postprocess_rules.py --input data/output/spark_rules.csv --output dat
 ```
 
 ## Reference
-**Cerezo, R., Calderón, V., & Romero, C. (2019).** *A holographic mobile-based application for practicing pronunciation of basic English vocabulary for Spanish speaking children*. International Journal of Human-Computer Studies, 124, 13-25. [https://doi.org/10.1016/j.ijhcs.2018.11.009](https://doi.org/10.1016/j.ijhcs.2018.11.009)
-
+López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). https://doi.org/10.1007/s12528-021-09273-3
 ```
-@article{cerezo2019holographic,
-  title={A holographic mobile-based application for practicing pronunciation of basic English vocabulary for Spanish speaking children},
-  author={Cerezo, Rebeca and Calder{\'o}n, Vicente and Romero, Crist{\'o}bal},
-  journal={International Journal of Human-Computer Studies},
-  volume={124},
-  pages={13--25},
-  year={2019},
-  publisher={Elsevier}
+@article{lopez2022improving,
+  title={Improving the portability of predicting students’ performance models by using ontologies},
+  author={L{\'o}pez-Zambrano, Javier and Lara, Juan A and Romero, Crist{\'o}bal},
+  journal={Journal of computing in higher education},
+  pages={1--19},
+  year={2022},
+  publisher={Springer}
 }
 ```
