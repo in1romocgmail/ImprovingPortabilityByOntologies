@@ -13,6 +13,9 @@ This code enables the preprocessing of Moodle datasets and performing portabilit
   - `ArffToCsvConverter.java`: Class for converting ARFF files to CSV
   - `Preprocess.java`: Class for data preprocessing
   - `PortabilityTests.java`: Class for performing portability tests
+- `data/`: Moodle datasets
+  - `discretized/`: Discretized datasets
+  - `numeric/`: Numerical datasets
 ```
 
 ## Prerequisites
