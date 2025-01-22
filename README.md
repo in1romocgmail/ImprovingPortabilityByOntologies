@@ -1,65 +1,79 @@
 # ImprovingPortabilityByOntologies
 
-This repository contains the source code associated to the paper:
+Source code used in the article: López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). [https://doi.org/10.1007/s12528-021-09273-3](https://doi.org/10.1007/s12528-021-09273-3)
 
-**López-Zambrano, J., Lara, J.A. & Romero, C.** Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). [https://doi.org/10.1007/s12528-021-09273-3](https://doi.org/10.1007/s12528-021-09273-3)
+This code enables the preprocessing of Moodle datasets and performing portability tests using the Weka library.
+
 ## Structure
 
-- `README.md`: Description and usage instructions.
-- `requirements.txt`: Python dependencies.
-- `src/`: Source code.
-  - `preprocess_data.py`: Script for data preprocessing.
-  - `discover_rules.py`: Sequential SD-DFPTRee script to discover rules.
-  - `sd_dfptree.py`: SD-DFPTRee Spark script to discover rules.
-  - `postprocess_rules.py`: Script for postprocessing rules.
-- `data/`: Datasets used.
+```
+- `README.md`: Description and usage instructions
+- `requirements.txt`: Java dependencies
+- `src/`: Source code
+  - `ArffToCsvConverter.java`: Class for converting ARFF files to CSV
+  - `Preprocess.java`: Class for data preprocessing
+  - `PortabilityTests.java`: Class for performing portability tests
+```
+
+## Prerequisites
+
+1. Java Development Kit (JDK) 8 or higher.
+2. [Weka Library](https://www.cs.waikato.ac.nz/ml/weka/): Place the `weka.jar` file in the `lib/` directory.
 
 ## Installation
 
 Clone the repository:
-
 ```
 git clone https://github.com/in1romocgmail/ImprovingPortabilityByOntologies.git
 ```
 
-## Requirements
-
-Install the dependencies using:
-
-```
-pip install -r requirements.txt
-```
-
-Copy the dataset to be used into the `data` directory.
-
 ## Usage
 
-### Step 1: Preprocess Data
+### Converting format
 
-```
-python src/preprocess_data.py --input data/input/raw_data.csv --output data/output/preprocessed_data.csv
-```
+Run the `ArffToCsvConverter` class to convert ARFF files to CSV. Follow the steps below:
 
-### Step 2: Discover Rules
-
+1. Compile the `ArffToCsvConverter.java` file:
 ```
-python src/discover_rules.py --input data/output/preprocessed_data.csv --output data/output/rules.csv
+javac -cp lib/weka.jar src/ArffToCsvConverter.java
 ```
 
-### Step 3: Discover Rules with Spark
-
+2. Run the compiled class:
 ```
-python src/sd_dfptree.py --input data/output/preprocessed_data.csv --output data/output/spark_rules.csv
+java -cp lib/weka.jar:src ArffToCsvConverter
 ```
 
-### Step 4: Postprocess Rules
+### Preprocessing
 
+Run the `Preprocess` class to preprocess datasets. Follow the steps below:
+
+1. Compile the `Preprocess.java` file:
 ```
-python src/postprocess_rules.py --input data/output/spark_rules.csv --output data/output/final_rules.csv
+javac -cp lib/weka.jar src/Preprocess.java
+```
+
+2. Run the compiled class:
+```
+java -cp lib/weka.jar:src Preprocess
+```
+
+### Portability Tests
+
+Run the `PortabilityTests` class to perform portability tests. Follow the steps below:
+
+1. Compile the `PortabilityTests.java` file:
+```
+javac -cp lib/weka.jar src/PortabilityTests.java
+```
+
+2. Run the compiled class:
+```
+java -cp lib/weka.jar:src PortabilityTests
 ```
 
 ## Reference
-López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). https://doi.org/10.1007/s12528-021-09273-3
+López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022).
+
 ```
 @article{lopez2022improving,
   title={Improving the portability of predicting students’ performance models by using ontologies},
