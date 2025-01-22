@@ -49,12 +49,12 @@ Run the `Preprocess` class to preprocess datasets. Follow the steps below:
 
 1. Compile the `Preprocess.java` file:
 ```
-javac -cp lib/weka.jar src/Preprocess.java
+javac -cp lib/weka.jar src/Preprocess.java 
 ```
 
 2. Run the compiled class:
 ```
-java -cp lib/weka.jar:src Preprocess
+java -cp lib/weka.jar:src Preprocess INPUTFILE.csv OUTPUTFILE.csv
 ```
 
 ### Portability Tests
@@ -63,12 +63,12 @@ Run the `PortabilityTests` class to perform portability tests. Follow the steps 
 
 1. Compile the `PortabilityTests.java` file:
 ```
-javac -cp lib/weka.jar src/PortabilityTests.java
+javac -cp lib/weka.jar src/PortabilityTests.java 
 ```
 
 2. Run the compiled class:
 ```
-java -cp lib/weka.jar:src PortabilityTests
+java -cp lib/weka.jar:src PortabilityTests  /PATHDATASET
 ```
 
 ## Reference
