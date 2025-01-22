@@ -5,14 +5,6 @@ Código fuente utilizado en el artículo: López-Zambrano, J., Lara, J.A. & Rome
 Este código permite el preprocesamiento de conjuntos de datos de Moodle y la realización de pruebas de portabilidad utilizando la libreria Weka.
 
 ## Estructura
-README.md                  # Descripción e instrucciones de uso
-requirements.txt           # Requisitos de compilación           
-src/
-├── Preprocess.java
-├── PortabilityTests.java
-lib/
-├── weka.jar  
-
 
  README.md                  # Descripción e instrucciones de uso  
  requirements.txt           # Requisitos  
