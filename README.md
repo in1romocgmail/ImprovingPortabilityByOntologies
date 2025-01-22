@@ -14,6 +14,16 @@ lib/
 ├── weka.jar  
 
 
+ README.md                  # Descripción e instrucciones de uso  
+ requirements.txt           # Requisitos  
+ src/                       # Código fuente  
+ ├── Preprocess.java        # Clase para preprocesar datos  
+ ├── PortabilityTests.java  # Clase para ejecutar las pruebas de portabilidad  
+ ├── sd_dfptree.py          # Script SD-DFPTRee Spark descubrir reglas  
+ lib/
+ ├── weka.jar               # Libreria weka  
+ 
+
 ## Requisitos Previos
 
 1. Java Development Kit (JDK) 8 o superior.
