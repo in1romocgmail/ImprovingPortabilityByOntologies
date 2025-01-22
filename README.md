@@ -1,6 +1,6 @@
 # ImprovingPortabilityByOntologies
 
-Source code used in the article: López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). [https://doi.org/10.1007/s12528-021-09273-3](https://doi.org/10.1007/s12528-021-09273-3)
+Source Code and Dataset used in the article: López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). [https://doi.org/10.1007/s12528-021-09273-3](https://doi.org/10.1007/s12528-021-09273-3)
 
 This code enables the preprocessing of Moodle datasets and performing portability tests using the Weka library.
 
