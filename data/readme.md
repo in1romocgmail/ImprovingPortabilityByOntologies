@@ -1,4 +1,4 @@
-# Metadata of Moodle Ontology Dataset
+# Metadata of Moodle Ontology Datasets
 
 Dataset used in the article: López-Zambrano, J., Lara, J.A. & Romero, C. Improving the portability of predicting students’ performance models by using ontologies. J Comput High Educ 34, 1–19 (2022). [https://doi.org/10.1007/s12528-021-09273-3](https://doi.org/10.1007/s12528-021-09273-3)
 
@@ -17,7 +17,7 @@ The datasets show students' activities on Moodle in terms of their participation
 
 
 ### Attributes
-The dataset includes the following attributes:
+The datasets include the following attributes:
 
 | **Attribute**              | **Type**   | **Description**                                              |
 |---------------------------|------------|-------------------------------------------------------------|
